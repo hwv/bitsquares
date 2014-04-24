@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# embedded options to qsub - start with #PBS
+# -- our name ---
+#PBS -N maxsq_$N-$BATCHNO-$BATCHTOTAL
+#PBS -m a
+#PBS -M hwv@hwv.dk
+#PBS -l walltime=1:00:00:00
+#PBS -o $N/output/$BATCHNO-$BATCHTOTAL.output
+#PBS -e $N/output/$BATCHNO-$BATCHTOTAL.error
+# -- run in the current working (submission) directory --
+cd $PBS_O_WORKDIR
+
+# here follow the commands you want to execute
+#
+
+./maxsquares $N $BATCHNO $BATCHTOTAL
+
